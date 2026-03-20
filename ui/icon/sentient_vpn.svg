@@ -7,75 +7,14 @@
    viewBox="0 0 10.583333 9.2604172"
    version="1.1"
    id="svg8"
-   sodipodi:docname="sentient_vpn.svg"
-   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/">
-  <sodipodi:namedview
-     id="namedview1"
-     pagecolor="#ffffff"
-     bordercolor="#848484"
-     borderopacity="1"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="false"
-     inkscape:deskcolor="#ffffff"
-     inkscape:zoom="9.8938494"
-     inkscape:cx="12.128747"
-     inkscape:cy="18.850095"
-     inkscape:window-width="1463"
-     inkscape:window-height="889"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg8"
-     showguides="false">
-    <sodipodi:guide
-       position="39.454129,2.9666083"
-       orientation="0,-1"
-       id="guide9"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="16.499647,-4.2086925"
-       orientation="0,-1"
-       id="guide10"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="29.803875,-19.331452"
-       orientation="0,-1"
-       id="guide11"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="74.88199,-33.793037"
-       orientation="0,-1"
-       id="guide14"
-       inkscape:locked="false" />
-  </sodipodi:namedview>
   <defs
      id="defs2">
-    <inkscape:path-effect
-       effect="fillet_chamfer"
-       id="path-effect13"
-       is_visible="true"
-       lpeversion="1"
-       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,6.4822166,0,1 @ F,0,0,1,0,6.7469514,0,1"
-       radius="4"
-       unit="px"
-       method="auto"
-       mode="F"
-       chamfer_steps="1"
-       flexible="false"
-       use_knot_distance="true"
-       apply_no_radius="true"
-       apply_with_radius="true"
-       only_selected="false"
-       hide_knots="false" />
     <linearGradient
        id="linearGradient319">
       <stop
