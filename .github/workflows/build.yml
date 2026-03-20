@@ -1,0 +1,50 @@
+name: Build Windows Executables
+
+on:
+  push:
+    branches: [ main, master, 'claude/*' ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            imagemagick \
+            mingw-w64 \
+            libarchive-tools
+
+      - name: Generate ICO files from SVGs
+        run: |
+          # Main UI icons
+          for svg in ui/icon/*.svg; do
+            ico="${svg%.svg}.ico"
+            convert -background none "$svg" \
+              -define icon:auto-resize="256,192,128,96,64,48,40,32,24,20,16" \
+              -compress zip "$ico"
+          done
+          # Installer/fetcher icon
+          cd installer/fetcher
+          convert -background none icon.svg \
+            -define icon:auto-resize="64,32,16" \
+            -compress zip icon.ico
+
+      - name: Build all architectures
+        run: make -j$(nproc)
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: wireguard-windows
+          path: |
+            amd64/wireguard.exe
+            x86/wireguard.exe
+            arm64/wireguard.exe
+          retention-days: 30
