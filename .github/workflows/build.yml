@@ -7,6 +7,9 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,8 +21,18 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             imagemagick \
+            inkscape \
             mingw-w64 \
             libarchive-tools
+
+          # Install llvm-mingw for aarch64 (ARM64) cross-compilation
+          curl -L -o /tmp/llvm-mingw.tar.xz \
+            https://github.com/mstorsjo/llvm-mingw/releases/download/20250514/llvm-mingw-20250514-ucrt-ubuntu-22.04-x86_64.tar.xz
+          sudo tar -xf /tmp/llvm-mingw.tar.xz -C /opt
+          echo "/opt/llvm-mingw-20250514-ucrt-ubuntu-22.04-x86_64/bin" >> "$GITHUB_PATH"
+
+          # Allow ImageMagick to process SVG files
+          sudo sed -i '/<policy domain="coder" rights="none" pattern="SVG"/d' /etc/ImageMagick-6/policy.xml || true
 
       - name: Generate ICO files from SVGs
         run: |
@@ -36,8 +49,14 @@ jobs:
             -define icon:auto-resize="64,32,16" \
             -compress zip icon.ico
 
-      - name: Build all architectures
-        run: make -j$(nproc)
+      - name: Build amd64
+        run: make amd64/wireguard.exe
+
+      - name: Build x86
+        run: make x86/wireguard.exe
+
+      - name: Build arm64
+        run: make arm64/wireguard.exe
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
